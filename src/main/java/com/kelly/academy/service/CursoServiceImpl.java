@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.kelly.academy.dao.CursoDAO;
 import com.kelly.academy.model.Curso;
+import com.kelly.academy.model.Familia;
 import com.kelly.academy.model.Profesor;
 
 @Service
@@ -53,6 +54,12 @@ public class CursoServiceImpl implements CursoService {
 	@Transactional
 	public List<Profesor> listaProfesores() {
 		return this.cursoDAO.listaProfesores();
+	}
+
+	@Override
+	@Transactional
+	public List<Familia> listaFamilias() {
+		return this.cursoDAO.listaFamilias();
 	}
 	
 	

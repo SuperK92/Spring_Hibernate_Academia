@@ -1,7 +1,5 @@
 package com.kelly.academy.model;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,8 +21,9 @@ public class Curso {
 	@Column(name="nombre_curso")
 	private String nombre;
 	
-	@Column(name="id_familia")
-	private int familia;
+	@ManyToOne
+    @JoinColumn(name="id_familia", nullable=false)
+	private Familia familia;
 	
 	@ManyToOne
     @JoinColumn(name="id_profesor", nullable=false)
@@ -50,14 +49,15 @@ public class Curso {
 		this.nombre = nombre;
 	}
 
-	public int getFamilia() {
+	
+	public Familia getFamilia() {
 		return familia;
 	}
 
-	public void setFamilia(int familia) {
+	public void setFamilia(Familia familia) {
 		this.familia = familia;
 	}
-	
+
 	public Profesor getProfesor() {
 		return profesor;
 	}
@@ -66,10 +66,6 @@ public class Curso {
 		this.profesor = profesor;
 	}
 
-	@Override
-	public String toString() {
-		return "Curso [id=" + id + ", nombre=" + nombre + ", familia=" + familia + ", profesor=" + profesor + "]";
-	}
 	
 	
 }

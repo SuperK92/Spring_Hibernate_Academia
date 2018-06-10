@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.kelly.academy.model.Curso;
+import com.kelly.academy.model.Familia;
 import com.kelly.academy.model.Profesor;
 
 public class CursoDAOImpl implements CursoDAO {
@@ -73,6 +74,19 @@ public class CursoDAOImpl implements CursoDAO {
 		}
 		return profesorList;
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Familia> listaFamilias() {
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Familia> familiasList = session.createQuery("from Familia").list();
+		for(Familia f : familiasList){
+			logger.info("Familia List::"+f);
+		}
+		return familiasList;
+	}
+	
+	
 	
 	
 	
