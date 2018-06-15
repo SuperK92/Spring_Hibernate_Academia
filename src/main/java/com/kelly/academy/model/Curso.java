@@ -1,11 +1,14 @@
 package com.kelly.academy.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -28,6 +31,9 @@ public class Curso {
 	@ManyToOne
     @JoinColumn(name="id_profesor", nullable=false)
     private Profesor profesor;
+	
+	@ManyToMany(mappedBy = "cursos") //Aquí va el atributo cursos en la tabla Alumno
+    private Set<Alumno> alumnos;
 
 	public Curso() {
 	
@@ -65,6 +71,16 @@ public class Curso {
 	public void setProfesor(Profesor profesor) {
 		this.profesor = profesor;
 	}
+
+	public Set<Alumno> getAlumnos() {
+		return alumnos;
+	}
+
+	public void setAlumnos(Set<Alumno> alumnos) {
+		this.alumnos = alumnos;
+	}
+	
+	
 
 	
 	
