@@ -9,10 +9,11 @@ import org.slf4j.LoggerFactory;
 
 import com.kelly.academy.model.Alumno;
 import com.kelly.academy.model.Curso;
+import com.kelly.academy.model.Matricula;
 
-public class AlumnoDAOImpl implements AlumnoDAO {
+public class MatriculaDAOImpl implements MatriculaDAO {
 	
-	private static final Logger logger = LoggerFactory.getLogger(AlumnoDAOImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(MatriculaDAOImpl.class);
 
 	private SessionFactory sessionFactory;
 	
@@ -21,14 +22,23 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 	}
 
 	@Override
-	public void addAlumno(Alumno p) {
+	public void addMatricula(Matricula p) {
 		Session session = this.sessionFactory.getCurrentSession();
+		
+		int id_alumno = p.getAlumno().getId();
+		Alumno alumno = (Alumno) session.load(Alumno.class, new Integer(id_alumno));
+		
+		int id_curso = p.getCurso().getId();
+		Curso curso = (Curso) session.load(Curso.class, new Integer(id_curso));
+		
+		p.setAlumno(alumno);
+		p.setCurso(curso);
 		session.persist(p);
 		logger.info("Person saved successfully, Person Details="+p);	
 	}
 
 	@Override
-	public void updateAlumno(Alumno p) {
+	public void updateMatricula(Matricula p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(p);
 		logger.info("Person updated successfully, Person Details="+p);
@@ -36,27 +46,27 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Alumno> listAlumnos() {
+	public List<Matricula> listMatriculas() {
 		Session session = this.sessionFactory.getCurrentSession();
-		List<Alumno> alumnosList = session.createQuery("from Alumno").list();
-		for(Alumno p : alumnosList){
+		List<Matricula> matriculasList = session.createQuery("from Matricula").list();
+		for(Matricula p : matriculasList){
 			logger.info("Person List::"+p);
 		}
-		return alumnosList;
+		return matriculasList;
 	}
 
 	@Override
-	public Alumno getAlumnoById(int id) {
+	public Matricula getMatriculaById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
-		Alumno p = (Alumno) session.load(Alumno.class, new Integer(id));
+		Matricula p = (Matricula) session.load(Matricula.class, new Integer(id));
 		logger.info("Person loaded successfully, Person details="+p);
 		return p;
 	}
 
 	@Override
-	public void removeAlumno(int id) {
+	public void removeMatricula(int id) {
 		Session session = this.sessionFactory.getCurrentSession();
-		Alumno p = (Alumno) session.load(Alumno.class, new Integer(id));
+		Matricula p = (Matricula) session.load(Matricula.class, new Integer(id));
 		if(null != p){
 			session.delete(p);
 		}
@@ -72,6 +82,17 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 			logger.info("Person List::"+c);
 		}
 		return cursosList;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Alumno> listAlumnos() {
+		Session session = this.sessionFactory.getCurrentSession();
+		List<Alumno> alumnosList = session.createQuery("from Alumno").list();
+		for(Alumno p : alumnosList){
+			logger.info("Person List::"+p);
+		}
+		return alumnosList;
 	}
 	
 	

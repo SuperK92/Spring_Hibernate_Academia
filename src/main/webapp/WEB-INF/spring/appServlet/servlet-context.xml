@@ -38,6 +38,7 @@
 				<beans:value>com.kelly.academy.model.Curso</beans:value>
 				<beans:value>com.kelly.academy.model.Familia</beans:value>
 				<beans:value>com.kelly.academy.model.Alumno</beans:value>
+				<beans:value>com.kelly.academy.model.Matricula</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
@@ -75,6 +76,13 @@
 	</beans:bean>
 	<beans:bean id="alumnoService" class="com.kelly.academy.service.AlumnoServiceImpl">
 		<beans:property name="alumnoDAO" ref="alumnoDAO"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="matriculaDAO" class="com.kelly.academy.dao.MatriculaDAOImpl">
+		<beans:property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory" />
+	</beans:bean>
+	<beans:bean id="matriculaService" class="com.kelly.academy.service.MatriculaServiceImpl">
+		<beans:property name="matriculaDAO" ref="matriculaDAO"></beans:property>
 	</beans:bean>
 	
 	<context:component-scan base-package="com.kelly.academy" />

@@ -1,5 +1,6 @@
 package com.kelly.academy.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -39,7 +40,7 @@ public class Profesor {
 	private String telefono;
 	
 	@OneToMany(mappedBy="profesor", cascade = CascadeType.ALL)
-	private Set<Curso> cursos;
+	private Set<Curso> cursos = new HashSet<Curso>(0);;
 
 	public int getId() {
 		return id;

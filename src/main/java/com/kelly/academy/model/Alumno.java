@@ -1,16 +1,18 @@
 package com.kelly.academy.model;
 
+
 import java.util.Set;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.JoinColumn;
+
+
+import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
 @Entity
@@ -40,9 +42,8 @@ public class Alumno {
 	@Column(name="telefono_alumno")
 	private String telefono;
 	
-	@ManyToMany(cascade = CascadeType.ALL) //Tabla cruzada, claves en la tabla matricula
-	@JoinTable(name = "matricula", joinColumns = { @JoinColumn(name = "id_alumno") }, inverseJoinColumns = { @JoinColumn(name = "id_curso") })
-	private Set<Curso> cursos;
+	@OneToMany(mappedBy = "alumno")
+	private Set<Matricula> matriculas;
 
 	public Alumno() {
 		
@@ -104,18 +105,12 @@ public class Alumno {
 		this.telefono = telefono;
 	}
 
-	public Set<Curso> getCursos() {
-		return cursos;
+	public Set<Matricula> getMatriculas() {
+		return matriculas;
 	}
 
-	public void setCursos(Set<Curso> cursos) {
-		this.cursos = cursos;
-	}
-
-	@Override
-	public String toString() {
-		return "Profesor [id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos
-				+ ", direccion=" + direccion + ", email=" + email + ", telefono=" + telefono + "]";
+	public void setMatriculas(Set<Matricula> matriculas) {
+		this.matriculas = matriculas;
 	}
 
 

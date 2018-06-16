@@ -86,10 +86,5 @@ public class CursoDAOImpl implements CursoDAO {
 		return familiasList;
 	}
 	
-	
-	
-	
-	
-	
 
 }

@@ -8,8 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -32,8 +33,8 @@ public class Curso {
     @JoinColumn(name="id_profesor", nullable=false)
     private Profesor profesor;
 	
-	@ManyToMany(mappedBy = "cursos") //Aquí va el atributo cursos en la tabla Alumno
-    private Set<Alumno> alumnos;
+	@OneToMany(mappedBy = "curso")
+	private Set<Matricula> matriculas;
 
 	public Curso() {
 	
@@ -72,14 +73,15 @@ public class Curso {
 		this.profesor = profesor;
 	}
 
-	public Set<Alumno> getAlumnos() {
-		return alumnos;
+	public Set<Matricula> getMatriculas() {
+		return matriculas;
 	}
 
-	public void setAlumnos(Set<Alumno> alumnos) {
-		this.alumnos = alumnos;
+	public void setMatriculas(Set<Matricula> matriculas) {
+		this.matriculas = matriculas;
 	}
-	
+
+
 	
 
 	
