@@ -44,12 +44,10 @@ public class CursoController {
 		
 		
 		if(c.getId() == 0){
-			//new person, add it
 			this.cursoService.addCurso(c);
 		}
 		else{
-			//existing person, call update
-		this.cursoService.updateCurso(c);
+			this.cursoService.updateCurso(c);
 		}
 		
 		return "redirect:/curso";

@@ -25,6 +25,8 @@ public class MatriculaDAOImpl implements MatriculaDAO {
 	public void addMatricula(Matricula p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		
+		//Se debe primero cargar los datos de los objetos de las 2 clases que van a contener los datos y luego establecerlo a esos valores ara finalmente guardar
+		
 		int id_alumno = p.getAlumno().getId();
 		Alumno alumno = (Alumno) session.load(Alumno.class, new Integer(id_alumno));
 		
@@ -34,14 +36,14 @@ public class MatriculaDAOImpl implements MatriculaDAO {
 		p.setAlumno(alumno);
 		p.setCurso(curso);
 		session.persist(p);
-		logger.info("Person saved successfully, Person Details="+p);	
+		logger.info("Matricula guardada correctamente, detalles = "+p);	
 	}
 
 	@Override
 	public void updateMatricula(Matricula p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(p);
-		logger.info("Person updated successfully, Person Details="+p);
+		logger.info("Matricula actualizada correctamente, detalles = "+p);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -50,7 +52,7 @@ public class MatriculaDAOImpl implements MatriculaDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Matricula> matriculasList = session.createQuery("from Matricula").list();
 		for(Matricula p : matriculasList){
-			logger.info("Person List::"+p);
+			logger.info("Lista Matriculas: "+p);
 		}
 		return matriculasList;
 	}
@@ -59,7 +61,7 @@ public class MatriculaDAOImpl implements MatriculaDAO {
 	public Matricula getMatriculaById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
 		Matricula p = (Matricula) session.load(Matricula.class, new Integer(id));
-		logger.info("Person loaded successfully, Person details="+p);
+		logger.info("Matricula cargada correctamente, detalles = "+p);
 		return p;
 	}
 
@@ -70,7 +72,7 @@ public class MatriculaDAOImpl implements MatriculaDAO {
 		if(null != p){
 			session.delete(p);
 		}
-		logger.info("Person deleted successfully, person details="+p);
+		logger.info("Matricula eliminada correctamente, detalles = "+p);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -79,7 +81,7 @@ public class MatriculaDAOImpl implements MatriculaDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Curso> cursosList = session.createQuery("from Curso").list();
 		for(Curso c : cursosList){
-			logger.info("Person List::"+c);
+			logger.info("Lista Cursos: "+c);
 		}
 		return cursosList;
 	}
@@ -90,7 +92,7 @@ public class MatriculaDAOImpl implements MatriculaDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Alumno> alumnosList = session.createQuery("from Alumno").list();
 		for(Alumno p : alumnosList){
-			logger.info("Person List::"+p);
+			logger.info("Lista Alumnos: "+p);
 		}
 		return alumnosList;
 	}

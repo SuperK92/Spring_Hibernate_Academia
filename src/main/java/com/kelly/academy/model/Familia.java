@@ -23,7 +23,7 @@ public class Familia {
 	@Column(name="nombre_familia")
 	private String nombre;
 	
-	@OneToMany(mappedBy="familia", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="familia")
 	private Set<Curso> cursos;
 
 	public int getId() {

@@ -23,14 +23,14 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 	public void addProfesor(Profesor p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(p);
-		logger.info("Person saved successfully, Person Details="+p);	
+		logger.info("Profesor guardado correctamente, detalles = "+p);	
 	}
 
 	@Override
 	public void updateProfesor(Profesor p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(p);
-		logger.info("Person updated successfully, Person Details="+p);
+		logger.info("Profesor guardado correctamente, detalles = "+p);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -39,7 +39,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Profesor> profesoresList = session.createQuery("from Profesor").list();
 		for(Profesor p : profesoresList){
-			logger.info("Person List::"+p);
+			logger.info("Lista Profesor: "+p);
 		}
 		return profesoresList;
 	}
@@ -48,7 +48,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 	public Profesor getProfesorById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
 		Profesor p = (Profesor) session.load(Profesor.class, new Integer(id));
-		logger.info("Person loaded successfully, Person details="+p);
+		logger.info("Profesor cargado correctamente, detalles = "+p);
 		return p;
 	}
 
@@ -59,7 +59,7 @@ public class ProfesorDAOImpl implements ProfesorDAO {
 		if(null != p){
 			session.delete(p);
 		}
-		logger.info("Person deleted successfully, person details="+p);
+		logger.info("Profesor eliminado correctamente, detalles = "+p);
 	}
 	
 	

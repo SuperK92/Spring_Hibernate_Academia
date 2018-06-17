@@ -6,10 +6,14 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	Proyecto Academia
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
-<a href="profesor">Ir a profesores</a>
+
+<a href="profesor">Ir a Profesores</a><br>
+<a href="alumno">Ir a Alumnos</a><br>
+<a href="curso">Ir a Cursos</a><br>
+<a href="familia">Ir a Familias</a><br>
+<a href="matricula">Ir a Matricula</a>
 </body>
 </html>

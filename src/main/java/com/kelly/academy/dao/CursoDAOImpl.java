@@ -25,14 +25,14 @@ public class CursoDAOImpl implements CursoDAO {
 	public void addCurso(Curso c) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(c);
-		logger.info("Curso saved successfully, Person Details="+c);	
+		logger.info("Curso guardado correctamente, detalles = "+c);	
 	}
 
 	@Override
 	public void updateCurso(Curso c) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(c);
-		logger.info("Curso updated successfully, Person Details="+c);
+		logger.info("Curso actualizado correctamente, detalles = "+c);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -41,7 +41,7 @@ public class CursoDAOImpl implements CursoDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Curso> cursosList = session.createQuery("from Curso").list();
 		for(Curso c : cursosList){
-			logger.info("Person List::"+c);
+			logger.info("Lista Cursos: "+c);
 		}
 		return cursosList;
 	}
@@ -50,7 +50,7 @@ public class CursoDAOImpl implements CursoDAO {
 	public Curso getCursoById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
 		Curso c = (Curso) session.load(Curso.class, new Integer(id));
-		logger.info("Curso loaded successfully, Person details="+c);
+		logger.info("Curso cargado correctamente, detalles = "+c);
 		return c;
 	}
 
@@ -61,7 +61,7 @@ public class CursoDAOImpl implements CursoDAO {
 		if(null != c){
 			session.delete(c);
 		}
-		logger.info("Curso deleted successfully, person details="+c);
+		logger.info("Curso eliminado correctamente, detalles = ="+c);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -70,7 +70,7 @@ public class CursoDAOImpl implements CursoDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Profesor> profesorList = session.createQuery("from Profesor").list();
 		for(Profesor c : profesorList){
-			logger.info("Person List::"+c);
+			logger.info("Lista Profesores: "+c);
 		}
 		return profesorList;
 	}
@@ -81,7 +81,7 @@ public class CursoDAOImpl implements CursoDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Familia> familiasList = session.createQuery("from Familia").list();
 		for(Familia f : familiasList){
-			logger.info("Familia List::"+f);
+			logger.info("Lista Familia: "+f);
 		}
 		return familiasList;
 	}

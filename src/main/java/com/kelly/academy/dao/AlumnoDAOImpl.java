@@ -24,14 +24,14 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 	public void addAlumno(Alumno p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(p);
-		logger.info("Person saved successfully, Person Details="+p);	
+		logger.info("Alumno guardado correctamente, detalles = "+p);	
 	}
 
 	@Override
 	public void updateAlumno(Alumno p) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(p);
-		logger.info("Person updated successfully, Person Details="+p);
+		logger.info("Alumno actualizado correctamente, detalles = "+p);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -40,7 +40,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Alumno> alumnosList = session.createQuery("from Alumno").list();
 		for(Alumno p : alumnosList){
-			logger.info("Person List::"+p);
+			logger.info("Lista Alumnos: "+p);
 		}
 		return alumnosList;
 	}
@@ -49,7 +49,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 	public Alumno getAlumnoById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
 		Alumno p = (Alumno) session.load(Alumno.class, new Integer(id));
-		logger.info("Person loaded successfully, Person details="+p);
+		logger.info("Alumno cargado correctamente, detalles = "+p);
 		return p;
 	}
 
@@ -60,7 +60,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 		if(null != p){
 			session.delete(p);
 		}
-		logger.info("Person deleted successfully, person details="+p);
+		logger.info("Alumno eliminado correctamente, detalles = "+p);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -69,7 +69,7 @@ public class AlumnoDAOImpl implements AlumnoDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Curso> cursosList = session.createQuery("from Curso").list();
 		for(Curso c : cursosList){
-			logger.info("Person List::"+c);
+			logger.info("Lista Cursos: "+c);
 		}
 		return cursosList;
 	}

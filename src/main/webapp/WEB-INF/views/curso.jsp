@@ -23,6 +23,7 @@
 	border-color: #ccc;
 	color: #333;
 	background-color: #fff;
+	text-align: center;
 }
 
 .tg th {
@@ -77,17 +78,6 @@
 							itemLabel="nombre" />
 					</form:select></td>
 			</tr>
-			<!-- 	<tr> -->
-			<!-- 		<td> -->
-			<%-- 			<form:label path="profesor.id"> --%>
-			<%-- 				<spring:message text="Profesor"/> --%>
-			<%-- 			</form:label> --%>
-			<!-- 		</td> -->
-			<!-- 		<td> -->
-			<%-- 			<form:input path="profesor.id" /> --%>
-			<!-- 		</td> -->
-			<!-- 	</tr> -->
-
 			<tr>
 				<td><form:label path="profesor">
 						<spring:message text="Profesor" />
@@ -98,7 +88,6 @@
 							itemLabel="nombre" />
 					</form:select></td>
 			</tr>
-
 			<tr>
 				<td colspan="2"><c:if test="${curso.id != 0}">
 						<input type="submit" value="<spring:message text="Editar Curso"/>" />
@@ -135,5 +124,7 @@
 			</c:forEach>
 		</table>
 	</c:if>
+	<br>
+	<a href="">Volver al Inicio</a>
 </body>
 </html>

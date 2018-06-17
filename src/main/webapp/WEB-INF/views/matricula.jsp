@@ -23,6 +23,7 @@
 	border-color: #ccc;
 	color: #333;
 	background-color: #fff;
+	text-align: center;
 }
 
 .tg th {
@@ -61,7 +62,7 @@
 				</tr>
 			</c:if>
 
-			
+
 			<tr>
 				<td><form:label path="curso">
 						<spring:message text="Curso" />
@@ -72,7 +73,7 @@
 							itemLabel="nombre" />
 					</form:select></td>
 			</tr>
-			
+
 			<tr>
 				<td><form:label path="alumno">
 						<spring:message text="Alumno" />
@@ -83,11 +84,12 @@
 							itemLabel="nombre" />
 					</form:select></td>
 			</tr>
-		
+
 
 			<tr>
 				<td colspan="2"><c:if test="${matricula.id != 0}">
-						<input type="submit" value="<spring:message text="Editar Matricula"/>" />
+						<input type="submit"
+							value="<spring:message text="Editar Matricula"/>" />
 					</c:if> <c:if test="${matricula.id == 0}">
 						<input type="submit"
 							value="<spring:message text="Insertar Matricula"/>" />
@@ -113,11 +115,15 @@
 					<td>${matricula.id}</td>
 					<td>${matricula.curso.nombre}</td>
 					<td>${matricula.alumno.nombre}</td>
-					<td><a href="<c:url value='/matricula/edit/${matricula.id}' />">Edit</a></td>
-					<td><a href="<c:url value='/matricula/remove/${matricula.id}' />">Delete</a></td>
+					<td><a
+						href="<c:url value='/matricula/edit/${matricula.id}' />">Edit</a></td>
+					<td><a
+						href="<c:url value='/matricula/remove/${matricula.id}' />">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</c:if>
+	<br>
+	<a href="">Volver al Inicio</a>
 </body>
 </html>

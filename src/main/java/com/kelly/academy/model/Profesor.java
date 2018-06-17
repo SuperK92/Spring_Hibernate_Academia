@@ -39,8 +39,8 @@ public class Profesor {
 	@Column(name="telefono_profesor")
 	private String telefono;
 	
-	@OneToMany(mappedBy="profesor", cascade = CascadeType.ALL)
-	private Set<Curso> cursos = new HashSet<Curso>(0);;
+	@OneToMany(mappedBy="profesor")
+	private Set<Curso> cursos;
 
 	public int getId() {
 		return id;

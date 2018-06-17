@@ -4,10 +4,10 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Person Page</title>
+	<title>Profesor</title>
 	<style type="text/css">
 		.tg  {border-collapse:collapse;border-spacing:0;border-color:#ccc;}
-		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff;}
+		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#fff; text-align: center;}
 		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#ccc;color:#333;background-color:#f0f0f0;}
 		.tg .tg-4eph{background-color:#f9f9f9}
 	</style>
@@ -134,11 +134,14 @@
 			<td>${profesor.direccion}</td>
 			<td>${profesor.email}</td>
 			<td>${profesor.telefono}</td>
-			<td><a href="<c:url value='/edit/${profesor.id}' />" >Edit</a></td>
-			<td><a href="<c:url value='/remove/${profesor.id}' />" >Delete</a></td>
+			<td><a href="<c:url value='/profesor/edit/${profesor.id}' />" >Edit</a></td>
+			<td><a href="<c:url value='/profesor/remove/${profesor.id}' />" >Delete</a></td>
 		</tr>
 	</c:forEach>
 	</table>
 </c:if>
+
+<br>
+<a href="">Volver al Inicio</a>
 </body>
 </html>

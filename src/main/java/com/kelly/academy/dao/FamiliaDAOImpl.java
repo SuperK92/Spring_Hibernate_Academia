@@ -23,14 +23,14 @@ public class FamiliaDAOImpl implements FamiliaDAO {
 	public void addFamilia(Familia f) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.persist(f);
-		logger.info("Familia saved successfully, Familia Details="+f);	
+		logger.info("Familia guardada correctamente, detalles = "+f);	
 	}
 
 	@Override
 	public void updateFamilia(Familia f) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.update(f);
-		logger.info("Familia updated successfully, Familia Details="+f);
+		logger.info("Familia actualizada correctamente, detalles = "+f);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -39,7 +39,7 @@ public class FamiliaDAOImpl implements FamiliaDAO {
 		Session session = this.sessionFactory.getCurrentSession();
 		List<Familia> familiasList = session.createQuery("from Familia").list();
 		for(Familia f : familiasList){
-			logger.info("Familia List::"+f);
+			logger.info("Lista Familias: "+f);
 		}
 		return familiasList;
 	}
@@ -48,7 +48,7 @@ public class FamiliaDAOImpl implements FamiliaDAO {
 	public Familia getFamiliaById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();		
 		Familia f = (Familia) session.load(Familia.class, new Integer(id));
-		logger.info("Familia loaded successfully, Familia details="+f);
+		logger.info("Familia cargada correctamente, detalles = "+f);
 		return f;
 	}
 
@@ -59,7 +59,7 @@ public class FamiliaDAOImpl implements FamiliaDAO {
 		if(null != f){
 			session.delete(f);
 		}
-		logger.info("Familia deleted successfully, Familia details="+f);
+		logger.info("Familia eliminada correctamente, detalles = "+f);
 	}
 	
 	
